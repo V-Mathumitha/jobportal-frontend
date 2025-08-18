@@ -1,0 +1,100 @@
+.register-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Header */
+.header {
+  background: #000;
+  color: white;
+  padding: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Main container */
+.register-container {
+  display: flex;
+  flex: 1;
+}
+
+/* Left image section */
+.register-left {
+  flex: 1;
+  background: #eaeaea;
+}
+.register-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right section with form */
+.register-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+/* Form box */
+.register-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 30px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  background: #fff;
+}
+
+/* Inputs + select */
+.register-box input,
+.register-box select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Button */
+.register-box button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-box button:hover {
+  background: #333;
+}
+
+/* Switch text */
+.switch-text {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.switch-text a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+.switch-text a:hover {
+  text-decoration: underline;
+}
