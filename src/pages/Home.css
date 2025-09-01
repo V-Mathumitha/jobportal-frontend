@@ -1,0 +1,94 @@
+/* ================= Hero Section ================= */
+.hero-section {
+  /* background: url("../assets/hero.jpg") no-repeat center center/cover; */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* ================= Step Boxes ================= */
+.step-box {
+  border-radius: 12px;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5rem;
+  text-align: center;
+}
+.step-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* ================= Companies Scrolling Section ================= */
+.companies-section {
+  overflow: hidden;
+  position: relative;
+  background: #22304f;   /* dark background */
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.companies-section h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ffc107; /* gold heading */
+  margin-bottom: 1.5rem;
+}
+
+.scrolling-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.scroll-content {
+  display: inline-flex;
+  animation: scroll-left 25s linear infinite;
+}
+
+.scroll-content span {
+  margin: 0 40px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+/* Animation for infinite scroll */
+@keyframes scroll-left {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 992px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 1.5rem;
+  }
+  .step-box {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 3rem 1rem;
+  }
+  .scroll-content span {
+    margin: 0 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .step-box {
+    padding: 1rem;
+  }
+  .scroll-content span {
+    font-size: 0.9rem;
+    margin: 0 15px;
+  }
+}

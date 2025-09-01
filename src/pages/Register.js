@@ -1,7 +1,6 @@
-"use client";
-
 import { useState } from "react";
 import { registerUser } from "../services/authService";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Register.css";
 
 export default function Register() {
@@ -10,11 +9,28 @@ export default function Register() {
   const [role, setRole] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Password rules
+  const passwordRules = {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),   // ✅ Added lowercase rule
+    number: /[0-9]/.test(password),
+    special: /[!@#$%^&*]/.test(password),
+  };
+
+  const isPasswordStrong = Object.values(passwordRules).every(Boolean);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    if (!isPasswordStrong) {
+      setError("Password does not meet the requirements.");
+      return;
+    }
 
     try {
       const userData = { email, password, role };
@@ -61,13 +77,35 @@ export default function Register() {
                 required
               />
 
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div className="password-field">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <span
+                  className="toggle-password"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+
+              {/* Password rules */}
+              <div className="password-rules">
+                <p>Password must contain:</p>
+                <ul>
+                  <li style={{ color: "black" }}>At least 8 characters</li>
+                  <li style={{ color: "black" }}>At least 1 uppercase letter</li>
+                  <li style={{ color: "black" }}>At least 1 lowercase letter</li> {/* ✅ Added */}
+                  <li style={{ color: "black" }}>At least 1 number</li>
+                  <li style={{ color: "black" }}>
+                    At least 1 special character (!@#$%^&*)
+                  </li>
+                </ul>
+              </div>
 
               <select
                 value={role}
